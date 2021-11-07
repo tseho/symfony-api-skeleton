@@ -1,0 +1,16 @@
+api_platform:
+    enable_docs: false
+    show_webby: false
+    mapping:
+        paths: [ '%kernel.project_dir%/src/Domain/Model' ]
+    patch_formats:
+        json: [ 'application/merge-patch+json' ]
+    swagger:
+        versions: [ 3 ]
+        api_keys:
+            token:
+                name: Authorization
+                type: header
+    formats:
+        json: [ 'application/json' ]
+        html: [ 'text/html' ]

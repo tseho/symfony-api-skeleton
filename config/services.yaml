@@ -1,0 +1,24 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Domain/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    App\Infrastructure\OpenApi\AuthentificationDecorator:
+        decorates: 'api_platform.openapi.factory'
+        autoconfigure: false
+        arguments:
+            - '@.inner'
+
+    App\Infrastructure\Security\EventSubscriber\JWTEventSubscriber:
+        arguments:
+            - '%lexik_jwt_authentication.token_ttl%'

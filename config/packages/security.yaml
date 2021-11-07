@@ -1,0 +1,31 @@
+security:
+    enable_authenticator_manager: true
+    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    password_hashers:
+        App\Infrastructure\Security\User:
+            algorithm: bcrypt
+    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+    providers:
+        users:
+            id: App\Infrastructure\Security\UserProvider
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        user_login:
+            pattern: ^/login
+            stateless: true
+            provider: users
+            json_login:
+                check_path: /login
+                username_path: email
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        api:
+            pattern: ^/
+            stateless: true
+            provider: users
+            jwt: ~
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
