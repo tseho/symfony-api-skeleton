@@ -42,7 +42,11 @@ up:
 
 .PHONY: down
 down:
-	$(DOCKER_COMPOSE) down -v --remove-orphan
+	$(DOCKER_COMPOSE) down --remove-orphan
+
+.PHONY: destroy
+destroy:
+	$(DOCKER_COMPOSE) down --remove-orphan --volumes --rmi local
 
 .PHONY: build
 build:

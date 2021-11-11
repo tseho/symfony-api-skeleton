@@ -22,31 +22,25 @@ docker run -d -p 127.0.0.1:8080:8080/tcp $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_VERSIO
 
 ### Start the project in 3 steps
 
-1) Create the default `.env` file
+1) Create your local `.env` file
 ```shell
 make .env
 ```
 2) Edit the values in `.env`, if necessary
-3) Start the docker-compose development environment:
+3) Start the development environment:
 ```shell
 make up
 ```
 
-### Commands
+### Useful commands
 
-Stop the development environment:
 ```shell
-make down
-```
-Execute a symfony command:
-```shell
-docker-compose run --rm php bin/console [cmd]
-```
-Execute a composer command:
-```shell
-docker-compose run --rm composer [cmd]
-```
-Launch the tests:
-```shell
-make tests
+make up # build & start the containers
+make down # stop the containers
+make destroy # remove all containers, all volumes, all docker images
+
+make tests # launch all the tests
+
+docker-compose run --rm php bin/console [cmd] # execute a symfony command
+docker-compose run --rm composer [cmd] # execute a composer command
 ```
