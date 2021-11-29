@@ -3,7 +3,7 @@
 ## How to use the skeleton
 
 ```shell
-composer create-project tseho/symfony-api-skeleton [directory]
+composer create-project --ignore-platform-reqs tseho/symfony-api-skeleton [directory]
 ```
 
 ## Production
