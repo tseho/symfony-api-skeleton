@@ -18,7 +18,7 @@ class JWTEventSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @return array<string, mixed>
+     * {@inheritdoc}
      */
     public static function getSubscribedEvents(): array
     {
