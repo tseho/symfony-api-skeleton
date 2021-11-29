@@ -54,6 +54,7 @@ build:
 	$(DOCKER_COMPOSE) build
 	$(MAKE) dependencies
 	$(MAKE) cache
+	$(PHP) bin/console assets:install public
 
 .PHONY: docker-image
 docker-image: APP_ENV=prod

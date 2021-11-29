@@ -2,7 +2,6 @@
 
 namespace App\Infrastructure\Security;
 
-use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
@@ -11,16 +10,6 @@ class UserProvider implements UserProviderInterface
     public function loadUserByIdentifier(string $identifier): UserInterface
     {
         throw new \ErrorException('not implemented');
-    }
-
-    private function createUserNotFoundException(
-        string $identifier,
-        ?\Throwable $previous = null
-    ): UserNotFoundException {
-        $exception = new UserNotFoundException('', 0, $previous);
-        $exception->setUserIdentifier($identifier);
-
-        return $exception;
     }
 
     /**
